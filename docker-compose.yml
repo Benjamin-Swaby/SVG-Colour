@@ -1,0 +1,7 @@
+version: "3.3"
+services:
+    svgColour:
+        build: .
+        image: svgcolour
+        volumes: 
+            - /etc/svgColour/:/opt/SVGcolour/images/ #map the input image
