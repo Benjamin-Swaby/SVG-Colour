@@ -14,7 +14,7 @@ returns:
 */
 
 
-pub fn find(contents :String, query :char) -> Vec<u32> {
+pub fn find(contents :&str, query :char) -> Vec<u32> {
     
     let mut result :Vec<u32> = Vec::new();
     
