@@ -10,7 +10,7 @@ this function will take the indexes and the string and generate an image for a c
 
 args:
     - indexes (Vec<(u32,  u32)>) -> the indexes of the colours
-    - svg (String)               -> the svg string 
+    - svg (&str)               -> the svg string 
     - colour (i32)               -> the colour. 
 
 returns:
@@ -19,7 +19,13 @@ returns:
 */
 fn create_image(indexes :&Vec<(u32, u32)>, svg :&str, colour :i32) -> String{
 
-    let new_colour :&dyn FnMut() -> String;
+
+    // super cool match statements mapping the correct function to be called a bunch. 
+    let new_colour :&dyn Fn() -> String;
+    //converting to a vector will make it easier to map the new colour to a specific index
+    let mut svg_string_vec :Vec<char> = svg.chars().collect();
+
+
 
     match colour {
         0 => new_colour = &colours::random_red,
@@ -32,14 +38,24 @@ fn create_image(indexes :&Vec<(u32, u32)>, svg :&str, colour :i32) -> String{
 
     };
 
-    
-    for i in indexes.iter(){
-        let colour_replace :String = new_colour();
-        
+    // for every index generate a new colour and replace the previous colour with the new one
+    for i in indexes.iter() {
+
+        let colour_replacement :String = new_colour();
+        let colour_replacement_vec :Vec<char> = colour_replacement.chars().collect();
+
+        for index in i.0 .. i.1 {
+            // set the chars between the bounds to the new colour.
+            // so new colour [0] will replace svg [i.0]
+            svg_string_vec[index as usize] = colour_replacement_vec[(index - i.0) as usize];
+        }
+
     }
 
+    //converting back to a String after making the changes 
+    let out :String = svg_string_vec.into_iter().collect();    
 
-    return String::from("test");
+    return out;
 }
 
 
@@ -61,7 +77,7 @@ fn create(indexes :Vec<(u32, u32)>, svg :String) -> Vec<String> {
 
     for i in 0..6{
         out.push(create_image(&indexes, &svg, i as i32));
-        
+
     }
 
     return out;
@@ -82,5 +98,13 @@ fn main() {
     
 
     let images :Vec<String> = create(indexes, svg);
+
+
+    
+    for (i, image) in images.iter().enumerate() {
+        load::write(&i.to_string(), image.to_string());    
+    }
+
+
 }
 

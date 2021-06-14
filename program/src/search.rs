@@ -43,7 +43,7 @@ pub fn gen_bounds(positions :Vec<u32>, length :u32) -> Vec<(u32, u32)>{
     let mut result :Vec<(u32, u32)> = vec![];
 
     for i in positions.iter() {
-        result.push((i.to_owned(),i+length));
+        result.push((i.to_owned()+1,i+length));
     }
     return result;
 

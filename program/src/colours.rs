@@ -24,18 +24,15 @@ fn random_value(max :i32 , min :i32) -> i16 {
         return y;
 
     }
-
-
     
     let y :i16 = rng.gen_range(min,max) as i16;
-    println!("{}",y);
     return y;
 }
 
 
 /*
-Random Red 
-this function will generate a random red colour using some random thresholds that are within the red colour band.
+Random *
+this function will generate a random * colour using some random thresholds that are within the * colour band.
 
 
 args:
@@ -43,22 +40,18 @@ args:
 returns:
     String -> a hex code for the colour that has been generated
 
-
-Bounds for red:
-    120<R<255
-    0  <G<70
-    G == B
+//TODO maybe see if i can make it deal with single hex values. rather than starting at 17
 */
 
 pub fn random_red() -> String {
 
-    let Red :String = format!("{:X}",random_value(255, 120));
-    let Green :String = format!("{:X}", random_value(70,17));
+    let red :String = format!("{:X}",random_value(255, 120));
+    let green :String = format!("{:X}", random_value(70,17));
 
-    println!("red : {}", Red);
-    println!(" green: {}", Green);
+    //println!("red : {}", red);
+    //println!(" green: {}", green);
 
-    let end :String = format!("{}{}{}",Red, Green , Green);
+    let end :String = format!("{}{}{}",red, green , green);
     println!("{}", end);
     return end;
 }
@@ -67,13 +60,13 @@ pub fn random_red() -> String {
 
 pub fn random_green() -> String {
 
-    let Green :String = format!("{:X}",random_value(255, 120));
-    let Red :String = format!("{:X}", random_value(70,17));
+    let green :String = format!("{:X}",random_value(255, 120));
+    let red :String = format!("{:X}", random_value(70,17));
 
-    println!("red : {}", Red);
-    println!(" green: {}", Green);
+    //println!("red : {}", red);
+    //println!(" green: {}", green);
 
-    let end :String = format!("{}{}{}",Red, Green , Red);
+    let end :String = format!("{}{}{}",red, green , red);
     println!("{}", end);
     return end;
 }
@@ -81,39 +74,39 @@ pub fn random_green() -> String {
 
 pub fn random_blue() -> String {
 
-    let Blue :String = format!("{:X}",random_value(255, 120));
-    let Red :String = format!("{:X}", random_value(70,17));
+    let blue :String = format!("{:X}",random_value(255, 120));
+    let red :String = format!("{:X}", random_value(70,17));
 
-    println!("red : {}", Red);
-    println!(" blue: {}", Blue);
+    //println!("red : {}", red);
+    //println!(" blue: {}", blue);
 
-    let end :String = format!("{}{}{}",Red, Red , Blue);
+    let end :String = format!("{}{}{}",red, red , blue);
     println!("{}", end);
     return end;
 }
 
 pub fn random_cyan() -> String {
 
-    let Blue :String = format!("{:X}",random_value(255, 120));
-    let Red :String = format!("{:X}", random_value(70,17));
+    let blue :String = format!("{:X}",random_value(255, 120));
+    let red :String = format!("{:X}", random_value(70,17));
 
-    println!("red : {}", Red);
-    println!(" blue: {}", Blue);
+    //println!("red : {}", red);
+    //println!(" blue: {}", blue);
 
-    let end :String = format!("{}{}{}",Red, Blue , Blue);
+    let end :String = format!("{}{}{}",red, blue , blue);
     println!("{}", end);
     return end;
 }
 
 pub fn random_yellow() -> String {
 
-    let Green :String = format!("{:X}",random_value(255, 120));
-    let Blue :String = format!("{:X}", random_value(70,17));
+    let green :String = format!("{:X}",random_value(255, 120));
+    let blue :String = format!("{:X}", random_value(70,17));
 
-    println!("green : {}", Green);
-    println!(" blue: {}", Blue);
+    //println!("green : {}", green);
+    //println!(" blue: {}", blue);
 
-    let end :String = format!("{}{}{}",Green, Green , Blue);
+    let end :String = format!("{}{}{}",green, green , blue);
     println!("{}", end);
     return end;
 }
@@ -121,13 +114,13 @@ pub fn random_yellow() -> String {
 
 pub fn random_pink() -> String {
 
-    let Blue :String = format!("{:X}",random_value(255, 120));
-    let Green :String = format!("{:X}", random_value(70,17));
+    let blue :String = format!("{:X}",random_value(255, 120));
+    let green :String = format!("{:X}", random_value(70,17));
 
-    println!("green : {}", Green);
-    println!(" blue: {}", Blue);
+    //println!("green : {}", green);
+    //println!(" blue: {}", blue);
 
-    let end :String = format!("{}{}{}",Blue, Green , Blue);
+    let end :String = format!("{}{}{}",blue, green , blue);
     println!("{}", end);
     return end;
 }
